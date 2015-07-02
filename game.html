@@ -1,0 +1,229 @@
+<!doctype html>
+
+<!-- Dan Carpenter, 6/30/2015 -->
+
+<html>
+<head>
+    <title>Working Game 5.0</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	
+	<link href="styles/styles.css" rel="stylesheet" />
+ 
+</head>
+
+
+<body style="margin: 0; padding: 0;">
+
+<!-- Popup is a container class that is 1024px x 768px (the size of an iPad screen).  
+Allows for everything inside of it to be properly aligned. -->
+<div class="popup" style="margin: 0">
+
+	<!-- The main game screen, including question and answers and categories -->
+	<div class="gamescreen">
+
+		<div id="MainGameScreen">
+
+		<table id="answertable">
+			<tr>
+				<td colspan="2"><div class="question" id="Question"><p id="questionText"></p></div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><div id="rectangle"></div></td>
+			</tr>
+			<tr >
+				<td><button class="answer" id="DivChoice1"></button></td>
+				<td><button class="answer" id="DivChoice2"></button></td>
+			</tr>
+			<tr>
+				<td><button class="answer" id="DivChoice3"></button></td>
+				<td><button class="answer" id="DivChoice4"></button></td>
+			</tr>
+			<tr>
+				<td colspan="2"><div id="footer">
+					<p>Brought to you by the <span id="nyspsc">New York State Department of Public Service</span></p>
+					</div>
+				</td>
+			</tr>
+			
+		</table>
+		 
+		
+		<table id="icontable">
+			<tr><td class="category">Category</td></tr>
+			<tr><td style="text-align: center;"><img src="images/watericon.png" width="130px" id="water"/></td></tr>
+			<tr><td style="text-align: center;"><img src="images/elecicon.png" width="130px" id="electricity"/></td></tr>
+			<tr><td style="text-align: center;"><img src="images/gasicon.png" width="130px" id="gas"/></td></tr>
+			<tr><td style="text-align: center;"><img src="images/phoneicon.png" width="130px" id="phone"/></td></tr>
+		</table>
+
+		<table id="alllabels">
+			<tr><td><p class="label" id="waterlabel">Water</p></td></tr>
+			<tr><td><p class="label" id="electricitylabel">Electricity</p></td></tr>
+			<tr><td><p class="label" id="gaslabel">Gas</p></td></tr>
+			<tr><td><p class="label" id="phonelabel">Phone</p></td></tr>
+		</table>
+		
+		</div>
+	</div>
+
+	<!-- Timed out popup for when the user doesn't answer the question within 30 seconds -->
+	<div class="timedOut">
+	
+		<h2 class="wrong timedOut">Out of time
+		
+			<p class="reason timedOut">You ran out of time.  Remember, you have 30 seconds to answer the question!</p>
+			
+			<button class="next timedOut"><p>NEXT</p></button>
+			
+		</h2>
+		
+	</div>
+
+	<!-- Correct screen, including the puzzle pieces of NYS, a congratulatory message, and an explanation of why
+	the answer the user chose is correct.  Also, for "extra" questions, the badges are positioned around the NYS puzzle -->
+	<div id="CorrectScreen">
+		<div class="circle">
+			<img src="images/newNY1.png" width="520px" class="nyPieces nys1"/>
+			<img src="images/newNY2.png" width="520px" class="nyPieces nys2"/>
+			<img src="images/newNY3.png" width="520px" class="nyPieces nys3"/>
+			<img src="images/newNY4.png" width="520px" class="nyPieces nys4"/>
+			<img src="images/newNY5.png" width="520px" class="nyPieces nys5"/>
+			<img src="images/newNY6.png" width="520px" class="nyPieces nys6"/>
+		</div>
+		
+		<div class="textbox">
+			<h1 class="correctText">Correct!</h1>
+			<p class="correctText explanation"></p>
+		</div>
+		
+		<table class="left">
+			<tr><td><img src="images/watericon.png" width="110px" class="badge waterbadge"/></td></tr>
+			<tr><td><img src="images/gasicon.png" width="110px" class="badge gasbadge"/></td></tr>
+		</table>
+		<table class="right">
+			<tr><td><img src="images/elecicon.png" width="110px" class="badge electricitybadge"/></td></tr>
+			<tr><td><img src="images/phoneicon.png" width="110px" class="badge phonebadge"/></td></tr>
+		</table>
+	</div>
+
+
+	<!-- Wrong screen, including the puzzle pieces of NYS, a sorry message, and an explanation of why the correct
+	anawer is correct.  Also has the badges the user can earn in the "extra" round -->
+	<div id="WrongScreen">
+		<div class="circle">
+			<img src="images/newNY1.png" width="520px" class="nyPieces nys1"/>
+			<img src="images/newNY2.png" width="520px" class="nyPieces nys2"/>
+			<img src="images/newNY3.png" width="520px" class="nyPieces nys3"/>
+			<img src="images/newNY4.png" width="520px" class="nyPieces nys4"/>
+			<img src="images/newNY5.png" width="520px" class="nyPieces nys5"/>
+			<img src="images/newNY6.png" width="520px" class="nyPieces nys6"/>
+		</div>
+		
+		<div class="textbox">
+			<h1 class="wrongText">Incorrect...</h1>
+			<p class="wrongText explanation"></p>
+		</div>
+		
+		<table class="left">
+			<tr><td><img src="images/watericon.png" width="110px" class="badge waterbadge"/></td></tr>
+			<tr><td><img src="images/gasicon.png" width="110px" class="badge gasbadge"/></td></tr>
+		</table>
+		<table class="right">
+			<tr><td><img src="images/elecicon.png" width="110px" class="badge electricitybadge"/></td></tr>
+			<tr><td><img src="images/phoneicon.png" width="110px" class="badge phonebadge"/></td></tr>
+		</table>
+	</div>
+
+	
+	<!-- Congratulations screen for when the user wins the game.  Has all NYS puzzle pieces lit up and shows
+	fireworks over them.  Also congratulates them and tells them what title they earned.  Also has the badges 
+	the user can earn in the "extra" round -->
+	<div id="Congratulations">
+		<div class="circle">
+			<img src="images/newNY1.png" width="520px" class="nyPieces nys1"/>
+			<img src="images/newNY2.png" width="520px" class="nyPieces nys2"/>
+			<img src="images/newNY3.png" width="520px" class="nyPieces nys3"/>
+			<img src="images/newNY4.png" width="520px" class="nyPieces nys4"/>
+			<img src="images/newNY5.png" width="520px" class="nyPieces nys5"/>
+			<img src="images/newNY6.png" width="520px" class="nyPieces nys6"/>
+			<img src="images/fireworks.gif" width="520px" id="fireworks"/>
+		</div>
+		
+
+		<h1 class="congratstext">Congratulations!</h1>
+		<p class="congratstext" id="congratsMessage"></p>
+
+	
+		<table class="left">
+			<tr><td><img src="images/watericon.png" width="110px" class="badge waterbadge"/></td></tr>
+			<tr><td><img src="images/gasicon.png" width="110px" class="badge gasbadge"/></td></tr>
+		</table>
+		<table class="right">
+			<tr><td><img src="images/elecicon.png" width="110px" class="badge electricitybadge"/></td></tr>
+			<tr><td><img src="images/phoneicon.png" width="110px" class="badge phonebadge"/></td></tr>
+		</table>
+	</div>
+	
+	<!-- Sorry screen for when the user does not answer at least 6 questions correctly. -->
+	<div id="Sorry">
+		<div class="circle">
+			<img src="images/newNY1.png" width="520px" class="nyPieces nys1"/>
+			<img src="images/newNY2.png" width="520px" class="nyPieces nys2"/>
+			<img src="images/newNY3.png" width="520px" class="nyPieces nys3"/>
+			<img src="images/newNY4.png" width="520px" class="nyPieces nys4"/>
+			<img src="images/newNY5.png" width="520px" class="nyPieces nys5"/>
+			<img src="images/newNY6.png" width="520px" class="nyPieces nys6"/>
+		</div>
+	
+		<h1 class="sorrytext">Sorry...</h1>
+		<p class="sorrytext" id="sorryMessage"></p>
+		
+		<button class="reset sorryNewGame">Reset</button>
+	</div>
+	
+	
+	<!-- Home screen for the game.  Has the watermarked NYS, the game's title, and the "rules" of the game, as well
+	as the play button and the NYSDPS logo in the right corner -->
+	<div id="HomeScreen">
+		<img class="nys" src="images/nys.png" width="800px"/>
+		<div class="title"><img src="images/utilityIQChallenge.png" /></div>
+		
+		<div class="rules"><img src="images/rules.png" /></div>
+		
+		<button id="playButton">PLAY</button>
+		
+		<img id="logo" src="images/psc.png" width="300px"/>
+	</div>
+	
+	
+	<!-- Popup for when the user is inactive for a certain amount of time -->
+	<div class="countdown">
+		<h2 class="alertTitle countdown">Still playing?
+			<p class="alert countdown">Press Continue to keep playing!</p>
+			
+			<button class="keepPlaying countdown"><p>Continue</p></button>
+			
+		</h2>
+	</div>
+	
+	
+	<!-- This contains all of the components of the game that do not specifically belong to any screen because they 
+	appear independently of the other screens -->
+	<div id="AppearingDiv">
+		<h2 id="showAttendant">Show the attendant that you won to receive your prize!</h2>
+		<button class="continue">Continue</button>
+		<button class="reset">Reset</button>
+	</div> 
+</div>
+
+<script src="questions.js"></script>
+
+<script src="scripts/scripts.js"></script>
+
+</body>
+</html>
