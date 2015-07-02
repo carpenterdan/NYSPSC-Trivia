@@ -1,0 +1,528 @@
+/* Dan Carpenter, 6/30/2015 */
+
+		.gamescreen {
+			background-color: #ffffff;
+			width:1024px;
+			height:768px;
+		}
+		
+		table {
+			margin:0 52px 0 52px;
+			position:relative;
+		}
+		
+		p {
+			padding:0;
+			margin:0;
+		}
+		
+		
+		/* Main Game Screen */
+		
+			#MainGameScreen {
+				display:none;
+			}
+			
+			div.question {
+				margin:45px 0 60px 0;
+				width:800px;
+				height:250px;
+				background-color: #FF6961;
+				border: 2px #afa496 groove;
+				border-radius:10px;
+				text-align:center;
+			}
+			
+			div.question p {
+				margin:0;
+				font-family:Arial,Helvetica,sans-serif;
+				color:#181818;
+				text-shadow: 1px 1px #afa496; 
+				font-size:350%;
+				position:absolute;
+				text-align:center;
+				padding:20px;
+			}
+			
+			#rectangle{
+				margin:15px 0 25px 0;
+				width:800px;
+				height:10px;
+				background:#afa496;
+				border: 1px #afa496 groove;
+				border-radius:10px;
+				position:absolute;
+				top:320px;
+			}
+			
+			#answertable {
+				position:absolute;
+				top:0;
+			}
+			
+			.answer {
+				font-family:Arial,Helvetica,sans-serif;
+				font-size:300%;
+				color:#181818;
+				background-color: #0077c8;
+				width:380px;
+				height:150px;
+				text-align:center;
+				text-shadow: 1px 1px #7d756b;
+				margin:15px 8px 0 8px;
+				border: 2px #afa496 groove;
+				border-radius: 10px;
+			}
+			
+			#footer {
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:130%;
+				position:relative;
+				margin:0;
+				margin-top:20px;
+				color:#181818;
+				text-align:center;
+			}
+			
+			#nyspsc {
+				font-weight:bold;
+				color:#f2a900;
+			}
+			
+			#icontable {
+				position:absolute;
+				top:50px;
+				left:805px;
+			}
+			
+			#water, #electricity, #gas, #phone {
+				opacity:.3;
+				margin:15px;
+			}
+			
+			.category {
+				position:absolute;
+				left:33px;
+				top:-25px;
+				font-family:Arial,Helvetica,sans-serif;
+				font-size:150%;
+				color:#181818;
+				text-decoration:underline;
+			}
+			
+			#alllabels {
+				text-align:center;
+				color:#000000;
+				position:absolute;
+				top:200px;
+				left:847px;
+				font-family:Arial, Helvetica, sans-serif;
+				font-weight: bold;
+			}
+			
+			.label {
+				position:relative;
+				margin-bottom:150px;
+			}
+			
+			#waterlabel {
+				top:5px;
+				left:2px;
+			}
+			
+			#electricitylabel {
+				left:2px;
+				margin-bottom:160px;
+			}
+			
+			#gaslabel {
+				top:-10px;
+				margin-bottom:140px;
+			}
+		
+			#phonelabel {
+				top:-5px;
+				margin-bottom:0;
+			}
+		
+		/* Timed Out Popup */
+		
+			.timedOut{
+				display:none;
+				position:absolute;
+			}
+			
+			.popup {
+				width:1024px;
+				height:768px;
+			}
+			
+			.wrong {
+				background-color:#8b0000;
+				opacity:0.95;
+				font-family:Arial,Helvetica,sans-serif;
+				font-size:500%;
+				color:#ffffff;
+				width:450px;
+				height:350px;
+				text-align:center;
+				text-shadow: 2px 2px #292727;
+				position:absolute;
+				left:284px;
+				top:-620px;
+				border: 3px white groove;
+				border-radius: 10px;
+			}
+			
+			.reason {
+				position:absolute;
+				font-size:40%;
+			}
+			
+			.next {
+				width:300px;
+				height:100px;
+				background-color:white;
+				position:absolute;
+				left:79px;
+				top:245px;
+				font-family:Arial,Helvetica,sans-serif;
+				font-size:100%;
+				border-radius:10px;
+				color:#8b0000;
+				text-align:center;
+			}
+			
+		
+		
+		/* Correct and Incorrect Screens */
+		
+			#CorrectScreen {
+				display:none;
+				position:absolute;
+				width:1024px;
+				top:0;
+			}
+			
+			#WrongScreen {
+				display:none;
+				position:absolute;
+				width:1024px;
+				top:0;
+			}
+			
+			.circle {
+				width:520px;
+				height:520px;
+				border-radius:260px;
+				position:relative;
+				top:10px;
+				margin-right:auto;
+				margin-left:auto;
+				margin-bottom:30px;
+			}
+			
+			.nys1, .nys2, .nys3, .nys4, .nys5, .nys6 {
+				opacity:0.2;
+			}
+			
+			.nyPieces {
+				animation-duration:1.5s;
+				animation-iteration-count: infinite;
+				animation-direction:alternate;
+			}
+			
+			.nys1 {
+				position:absolute;
+			}
+			
+			.nys2 {
+				position:absolute;
+			}
+			
+			.nys3 {
+				position:absolute;
+				top:0px;
+				left:1px;
+			}
+			
+			.nys4 {
+				position:absolute;
+				top:0px;
+			}
+			
+			.nys5 {
+				position:absolute;
+				left:1px;
+			}
+			
+			.nys6 {
+				position:absolute;
+			}
+			
+			.correctText{
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:200%;
+				color:green;
+				text-align:center;
+				margin:10px;
+			}
+			
+			h1.correctText {
+				font-size:300%;
+			}
+			
+			.wrongText{
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:200%;
+				color:red;
+				text-align:center;
+				margin:10px;
+			}
+			
+			h1.wrongText {
+				font-size:300%;
+			}
+			
+			.continue {
+				background-color:white;
+				position:absolute;
+				width:150px;
+				height:60px;
+				font-size:20px;
+				margin-right:20px;
+				left:850px;
+				top:700px;
+				border-radius:10px;
+				display:none;
+			}
+			
+			.textbox {
+				height:140px;
+			}
+		
+		
+		/* Congratulations Screen */
+		
+			#Congratulations {
+				display:none;
+				position:absolute;
+				width:1024px;
+				top:0;
+			}
+			
+			.congratstext{
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:200%;
+				color:green;
+				text-align:center;
+				margin:10px;
+			}
+			
+			h1.congratstext {
+				font-size:300%;
+			}
+			
+			.reset {
+				position:absolute;
+				top:700px;
+				width:150px;
+				height:60px;
+				font-size:20px;
+				margin-right:20px;
+				left:850px;
+				border-radius:10px;
+				display:none;
+				background-color:white;
+			}
+				
+			.right, .left {
+				position:absolute;
+				top:0;
+			}
+			
+			.right {
+				left:0;
+			}
+			
+			.left {
+				left:0;
+			}
+			
+			.waterbadge, .electricitybadge, .gasbadge, .phonebadge {
+				margin-bottom:200px;
+				position:absolute;
+				opacity:1;
+			}
+			
+			.waterbadge {
+				left:10px;
+				top:20px;
+			}
+			
+			.electricitybadge {
+				left:780px;
+				top:20px;
+			}
+			
+			.gasbadge {
+				left:10px;
+				top:345px;
+			}
+			
+			.phonebadge {
+				left:780px;
+				top:345px;
+			}
+		
+			#fireworks {
+				position:absolute;
+				top:0;
+				left:0;
+				z-index:2;
+			}
+			
+			
+		/* Final Screen Animated Objects */
+		
+			#AppearingDiv {
+				position:absolute;
+				width:1024px;
+				top:0;
+			}
+			
+			
+			#showAttendant {
+				position:absolute;
+				top:15px;
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:300%;
+				color:green;
+				text-align:center;
+				display:none;
+			}
+			
+		
+		
+		/* Sorry Screen */
+			#Sorry {
+				display:none;
+				position:absolute;
+				width:1024px;
+				top:0;
+			}
+			
+			.sorrytext{
+				font-family:Arial, Helvetica, sans-serif;
+				font-size:200%;
+				color:red;
+				text-align:center;
+				margin:10px;
+			}
+			
+			h1.sorrytext {
+				font-size:300%;
+			}
+		
+			.sorryNewGame {
+				position:absolute;
+				top:700px;
+			}
+		
+		
+		/* Home Screen */
+		
+			#HomeScreen {
+				position:absolute;
+				width:1024px;
+				height:768px;
+				top:0;
+			}
+			
+			.title {
+				position:absolute;
+				left:37px;
+				top:0;
+			}
+			
+			.rules {
+				position:absolute;
+				top:320px;
+			}
+			
+			#playButton {
+				font-family:Arial,Helvetica,sans-serif;
+				font-size:300%;
+				color:#181818;
+				background-color:#0077c8;
+				width:430px;
+				height:150px;
+				text-shadow: 1px 1px #7d756b;
+				margin-top:80px;
+				border: 2px #afa496 groove;
+				border-radius: 10px;
+				position:absolute;
+				top:440px;
+				left:293px;
+			}
+			
+			#logo {
+				position:absolute;
+				top:690px;
+				left:710px;
+				margin-right:10px;
+			}
+			
+			.nys {
+				position:absolute;
+				top:75px;
+				left:112px;
+				opacity: 0.19;
+			}
+			
+			
+			
+		/* Timed Out Popup */
+	
+			.countdown{
+				display:none;
+				position:absolute;
+			}
+			
+			.alertTitle {
+				background-color:#0077c8;
+				opacity:0.9;
+				font-family:Arial,Helvetica,sans-serif;
+				font-size:450%;
+				color:#f2a900;
+				width:450px;
+				height:350px;
+				text-align:center;
+				text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+				position:absolute;
+				left:284px;
+				top:-620px;
+				border: 3px #002d72 groove;
+				border-radius: 10px;
+			}
+			
+			.alert {
+				position:absolute;
+				font-size:60%;
+				top:100px;
+			}
+			
+			.keepPlaying {
+				width:300px;
+				height:100px;
+				background-color:#8db9ca;
+				position:absolute;
+				left:79px;
+				top:245px;
+				font-family:Arial,Helvetica,sans-serif;
+				font-size:80%;
+				text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+				border-radius:10px;
+				border: 2px #233e90 groove;
+				color:#f2a900;
+			}
